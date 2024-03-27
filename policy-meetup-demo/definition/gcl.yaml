@@ -1,0 +1,42 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  labels:
+    title: Policy Meetup Demo
+    category: Custom
+    description: Politica desenvolvida no Meetup
+spec:
+  extends:
+    - name: extension-definition
+      namespace: default
+  properties:
+    serviceValue:
+      title: Serviço de Validação
+      description: Host do Serviço que fara a validação
+      type: string
+      format: service
+    header:
+      title: Header
+      description: Header que sera validado
+      type: string
+    tagBody:
+      title: Tag Body
+      description: Campo do Body que sera validado
+      type: string
+    ambiente:
+      title: Ambiente
+      description: Ambiente da Politica
+      type: string
+      enum: ["DEV","HML","PROD"]
+    validar:
+      title: Validar
+      description: raliazar validação externa
+      type: boolean
+      default: true        
+
+  required:
+    - serviceValue
+    - header
+    - tagBody
+    - ambiente
